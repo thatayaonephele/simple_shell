@@ -105,7 +105,6 @@ void display_err(data_t *, char *);
 /**interactive.c*/
 int int_sh(data_t *);
 int delim_check(char, char *);
-int alph_check(int);
 int my_atoi(char *);
 /*node.c*/
 ssize_t find_index_node(stringnode_t *, stringnode_t *);
@@ -117,7 +116,6 @@ int delete_node_at_index(stringnode_t **, unsigned int);
 int lexi_cmp(char *, char *);
 char *cpy_str(char *, char *);
 char *cat_str(char *, char *);
-int str_len(char *);
 char *hay_start(const char *, const char *);
 /**print_strings.c*/
 int _putchar(char);
@@ -226,4 +224,8 @@ void cmd_fork(data_t *);
 int get_built_in(data_t *);
 ssize_t buf_input(data_t *, char **, size_t *);
 
+/*strings.c*/
+int alph_check(int);
+/*strings2.c*/
+int str_len(char *);
 #endif
