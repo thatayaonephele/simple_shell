@@ -40,3 +40,46 @@ char *cpy_str(char *destination, char *source)
 	destination[x] = 0;
 	return (destination);
 }
+/**
+ * str_len - Determines string length of input
+ * @chr_str: The input string parameter to be evaluated
+ *
+ * Return: The input string parameter lenth
+ */
+
+int str_len(char *chr_str)
+{
+}
+
+/**
+ * cat_str - A function that returns 2 concatenated strings
+ * @string1: the 1st destination string parameter
+ * @string2: the 2nd source string parameter
+ *
+ * Return: The pointer pointing to the dest buffer of string 1 & 2
+ */
+
+char *cat_str(char *string1, char *string2)
+{
+	int len1;
+	char *null_term_pos;
+	int max_bytes_available;
+	int bytes_to_concatenate;
+
+	len1 = 0;
+	while (string1[len1] != '\0')
+		len1++;
+
+	/*find position of null terminator in string2*/
+	null_term_pos = _str_chr(string2, '\0');
+
+	max_bytes_available = BUFFER_SIZE - len1;
+
+	bytes_to_concatenate = null_term_pos - string2;
+	if (bytes_to_concatenate > max_bytes_available)
+		bytes_to_concatenate = max_bytes_available;
+
+	_str_ncat(string1, string2, bytes_to_concatenate);
+
+	return (string1);
+}
