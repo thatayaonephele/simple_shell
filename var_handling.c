@@ -9,3 +9,19 @@
  */
 
 int curr_char_buff(data_t *data, char *ch_buff, size_t *ptr)
+{
+	char current_char;
+
+	current_char = data->arg[*ptr];
+
+	while (current_char != '\0')
+	{
+		if (current_char == *ch_buff)
+		{
+			return (1);
+		}
+		(*ptr)++;
+		current_char = data->arg[*ptr];
+	}
+	return (0);
+}
