@@ -2,8 +2,7 @@
 
 /**
  * _change_dir - Returns the changes made in the current user directory
- * @d: Structure containing potential arguments. Used to maintain
- *
+ * @d: Structure containing potential arguments. Used to maintain *
  * Return: Always Success(0)
  */
 int _change_dir(data_t *d)
@@ -40,4 +39,24 @@ int current_cd(data_t *d)
 		}
 	}
 	return (1);
+}
+/**
+ * my_his_list - Prints the the history list, one command per line
+ * @d: The variable address of the data structure parameter
+ *
+ * Return: Always success (0)
+ */
+
+int my_his_list(data_t *d)
+{
+	linked_str *current = d->list_his;
+	int file_des = STDOUT_FILENO; /*descriptor for output*/
+
+	while (current != NULL)
+	{
+		write(file_des, current->s, str_len(current->s));
+		write(file_des, "\n", 1);
+		current = current->next;
+	}
+	return (0);
 }

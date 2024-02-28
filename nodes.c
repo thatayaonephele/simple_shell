@@ -19,3 +19,59 @@ ssize_t find_index_node(linked_str *h, linked_str *my_node)
 	}
 	return (-1);
 }
+/**
+ * node_starts_with - Return a node based on  a desired sub str matching prefix
+ * @my_node: The ptr pointing to the head of the linked list
+ * @sub_str: The desired matching search string
+ * @chr: The preceeding char after matching is completed
+ * Return: The macthed my_node ptr on success, else null
+ */
+
+linked_str *node_starts_with(linked_str *my_node, char *sub_str, char chr)
+{
+	char *ptr = NULL;
+
+	for (; my_node; my_node = my_node->next)
+	{
+		ptr = hay_start(my_node->s, sub_str);
+		if (ptr && chr == -1)
+			return (my_node);
+		if (*ptr == chr)
+			return (my_node);
+	}
+	return (NULL);
+}
+/**
+ * add_node - Appends to the linked list start index a new node
+ * @node_h: The pointer pointing to node of the linked List head address
+ * @s: The struct string field variable of the linked list node
+ * @n: The struct field number for the shell history index node
+ *
+ * Return: The linked list size on success,else NULL on failuire
+ */
+
+linked_str *add_node(linked_str **node_h, char *s, int n)
+{
+	linked_str *new_node, *current;
+
+	new_node = (linked_str *)malloc(sizeof(linked_str));
+	if (new_node == NULL)
+		return (NULL);
+
+	new_node->s = _str_ncpy(NULL, s, str_len(s));
+	new_node->n = n;
+	new_node->next = NULL;
+
+	if (*node_h == NULL)
+	{
+		*node_h = new_node;
+		return (new_node);
+	}
+	current = *node_h;
+	while (current->next != NULL)
+		current = current->next;
+
+	current->next = new_node;
+
+	return (new_node);
+}

@@ -47,3 +47,25 @@ int free_vars(void **p)
 	}
 	return (0);
 }
+/**
+ * set_mem - fills a block of memory with a given byte value
+ * @str: The pointer to the memory block to be filled
+ * @my_byte: The byte value to fill the memory block with
+ * @fill_amount: The number of bytes to fill
+ *
+ * Return: Pointer to the filled memory block
+ */
+
+char *set_mem(char *str, char my_byte, unsigned int fill_amount)
+{
+	unsigned int i;
+
+	if (str == NULL || fill_amount == 0)
+		return (NULL);
+
+	for (i = 0; i < fill_amount; i++)
+	{
+		str[i] = my_byte;
+	}
+	return (str);
+}
