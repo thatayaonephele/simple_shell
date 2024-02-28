@@ -30,3 +30,20 @@ void *mem_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return;
 	return (ptr);
 }
+/**
+ * free_vars - Nullify variable address and free the pointer variable
+ * @p: The pointer address pointing to a pointer variable to be freed
+ *
+ * Return: 1 if vars were successfully freed, else 0 on failure
+ */
+
+int free_vars(void **p)
+{
+	if (p != NULL && *p != NULL)
+	{
+		free(*p);
+		*p = NULL;
+		return (1);
+	}
+	return (0);
+}

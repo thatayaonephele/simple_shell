@@ -63,3 +63,24 @@ char **list_to_str(linked_str *my_head)
 
 	return (str_array);
 }
+/**
+ * free_mem - A function that frees the allocated memory of all LL nodes
+ * @h: A pointer to the address of the 1st linked list node
+ *
+ * Return: Nothing (void)
+ */
+
+void free_mem(linked_str **h)
+{
+	linked_str *current = *h;
+	linked_str *next;
+
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current->s);
+		free(current);
+		current = next;
+	}
+	*h = NULL;
+}

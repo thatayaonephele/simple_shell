@@ -104,3 +104,53 @@ void comment_remover(char *my_buffer)
 	if (hash_pos != NULL)
 		*hash_pos = '\0';
 }
+/**
+ * print_decimal - Displays a base 10 number digit in decimal integer format
+ * @y: The input number parameter to be evaluated
+ * @file_des: The file descriptor parameter to accept the file write arguments
+ *
+ * Return: The number of displayed characters
+ */
+
+int print_decimal(int y, int file_des)
+{
+	char buffer[20];
+	int length = 0;
+	char zero_char;
+	char minus_char;
+	int i, j;
+	char temp;
+
+	if (y == 0)
+	{
+		zero_char = '0';
+		write(file_des, &zero_char, 1);
+		return (1); /*return 1 as there is 1 character displayed ('0')*/
+	}
+	if (y < 0)
+	{
+		minus_char = '-';
+		write(file_des, &minus_char, 1);
+		y = -y;
+		length++;
+	}
+	/*convert the number to a string in decimal format*/
+	i = 0;
+
+	while (y != 0)
+	{
+		buffer[i++] = '0' + y % 10;
+		y = y / 10;
+	}
+	length += 1;
+	/*reverse the character in the buffer to get the correct order*/
+	for (j = 0; j < i / 2; j++)
+	{
+		temp = buffer[j];
+		buffer[j] = buffer[i - j - 1];
+		buffer[i - j - 1] = temp;
+	}
+	write(file_des, buffer, i);
+
+	return (length);
+}

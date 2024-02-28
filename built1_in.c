@@ -23,3 +23,21 @@ int _change_dir(data_t *d)
 	}
 	return (0);
 }
+/**
+ * current_cd - Returns change made in a process's directory
+ * @d: The variable address of the data structure parameter
+ *
+ * Return: 0 on Success, else 1 is on failure
+ */
+
+int current_cd(data_t *d)
+{
+	if (d != NULL && d->path != NULL)
+	{
+		if (chdir(d->path) == 0)
+		{
+			return (0);
+		}
+	}
+	return (1);
+}
