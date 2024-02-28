@@ -52,3 +52,44 @@ int del_env(data_t *d, char *str_env_var)
 	}
 	return (0);
 }
+/**
+ * add_env - Establish a new enviroment variable if it doesnt exist
+ * @d: The variable address of the data structure parameter
+ * @str_env_var: The variable parameter of the string enviroment
+ * @str_var: The variable value of the string enviroment
+ *
+ * Return: Always Success (0)
+ */
+
+int add_env(data_t *d, char *str_env_var, char *str_var)
+{
+	int i;
+	char **new_environ;
+	size_t env_size = 0;
+
+	if (!d || !str_env_var || !str_var)
+		return (1);
+
+	for (i = 0; d->environ[i] != NULL; i++)
+		env_size++;
+
+	new_environ = malloc((env_size + 2) * sizeof(char *));
+
+	if (!new_environ)
+		return (1);
+
+	for (i = 0; d->environ[i] != NULL; i++)
+		new_environ[i] = d->environ[i];
+
+	new_environ[env_size] = _str_ncpy(NULL, str_env_var, str_len(str_env_var));
+	new_environ[env_size] = _str_ncat(new_environ[env_size], "=", 1);
+	new_environ[env_size] = _str_ncat(new_environ[env_size],
+			str_var, str_len(str_var));
+
+	new_environ[env_size + 1] = NULL;
+
+	free(d->environ);
+	d->environ = new_environ;
+
+	return (0);
+}

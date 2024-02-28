@@ -60,3 +60,18 @@ int my_his_list(data_t *d)
 	}
 	return (0);
 }
+/**
+ * mimic_alias - A function that is a carbon copy of the alias builtin command
+ * @d: The variable address of the data structure parameter
+ *
+ * Return: Always Success (0)
+ */
+
+int mimic_alias(data_t *d)
+{
+	int result;
+
+	result = display_alias(d->my_alias);
+
+	return (result);
+}

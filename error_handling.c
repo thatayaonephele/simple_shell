@@ -1,29 +1,4 @@
 #include "shell.h"
-
-/**
- * reverse_string - reverses string
- * @str: string to reverse
- *
- * Return: string
- */
-
-char *reverse_string(char *str)
-{
-	int start, end;
-	char temp;
-
-	start = 0;
-	end = strlen(str) - 1;
-
-	while (start < end)
-	{
-		temp = str[start];
-		str[start++] = str[end];
-		str[end--] = temp;
-	}
-	return (str);
-}
-
 /**
  * num_converter - A converting function that mimics the iota
  * @n: The input number parameter we wish to convert to string
@@ -67,7 +42,7 @@ char *num_converter(long int n, int my_radix, int my_bool)
 
 	result[i] = '\0';
 
-	return (reverse_string(result));
+	return (reverse_string(result)); /*Replace this code*/
 }
 /**
  *_myhelp -  Returns changes made in a process's directory

@@ -228,4 +228,6 @@ ssize_t buf_input(data_t *, char **, size_t *);
 int alph_check(int);
 /*strings2.c*/
 int str_len(char *);
+
+int hsh(data_t *, char **);
 #endif
