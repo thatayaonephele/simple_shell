@@ -20,3 +20,23 @@ int lexi_cmp(char *first_str, char *second_str)
 	else
 		return (0);
 }
+/**
+ * cpy_str - Returns a string copy of desired target string
+ * @source: The src variable address parameter to duplicate string from
+ * @destination: The dest variable address parameter to duplicate string to
+ * Return: The poiter pointing to the string dest parameter
+ */
+
+char *cpy_str(char *destination, char *source)
+{
+	int x = 0;
+
+	if (destination == source)
+		return (destination);
+	if (source == 0)
+		return (destination);
+	for (; source[x]; x++)
+		destination[x] = source[x];
+	destination[x] = 0;
+	return (destination);
+}

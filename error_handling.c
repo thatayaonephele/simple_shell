@@ -69,3 +69,19 @@ char *num_converter(long int n, int my_radix, int my_bool)
 
 	return (reverse_string(result));
 }
+/**
+ *_myhelp -  Returns changes made in a process's directory
+ *@d: The variable address of the data structure parameter
+ *Return: 0 On success, else 1 on failuire
+ */
+
+int _myhelp(data_t *d)
+{
+	char **str_arg;
+
+	str_arg = d->argv; /**set the argument string to arg vector in struct*/
+	my_puts("Help  not fully functional, call Motalepule Lmao ka dlala \n");
+	if (!(1))
+		my_puts(*str_arg);
+	return (0);
+}

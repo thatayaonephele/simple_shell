@@ -41,3 +41,22 @@ void my_puts(char *s)
 	for (; s[x] != '\0'; x++)
 		_putchar(s[x]);
 }
+/**
+ *fd_puts - Write out file descriptor to target destination the inputed string
+ * @s: The inputed string parameter to be displayed
+ * @file_des: The file descriptor parameter
+ * Return: The amount of characters parsed to the function
+ */
+
+int fd_puts(char *s, int file_des)
+{
+	int x = 0;
+
+	if (s == NULL)
+		return (0);
+	while (!(*s) == false)
+	{
+		x = x + fd_put(*s++, file_des);
+	}
+	return (x);
+}
