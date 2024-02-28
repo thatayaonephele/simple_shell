@@ -85,3 +85,22 @@ int _myhelp(data_t *d)
 		my_puts(*str_arg);
 	return (0);
 }
+/**
+ * comment_remover - Substitute 1st occurance of '#' with null termination char
+ * @my_buffer: The pointer pointing to the address parameter
+ * Return: Always Success(0)
+ */
+
+void comment_remover(char *my_buffer)
+{
+	char *hash_pos;
+	/*check if input is NULL*/
+	if (my_buffer == NULL)
+		return;
+
+	hash_pos = strchr(my_buffer, '#');
+
+	/*if '#' found, replace with '\0' to remove comment*/
+	if (hash_pos != NULL)
+		*hash_pos = '\0';
+}
