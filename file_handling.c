@@ -6,7 +6,7 @@
  * Return: Linked List size
  */
 
-size_t display_list(const linked_str *head_node)
+size_t display_list(const stringnode_t *head_node)
 {
 	size_t x = 0;
 

@@ -48,7 +48,7 @@ int append_env_list(data_t *d)
 {
 	int i;
 	size_t env_size = 0;
-	linked_str *new_node;
+	stringnode_t *new_node;
 
 	if (!d)
 		return (1);
@@ -64,7 +64,7 @@ int append_env_list(data_t *d)
 
 		if (name && value)
 		{
-			new_node = malloc(sizeof(linked_str));
+			new_node = malloc(sizeof(stringnode_t));
 			if (!new_node)
 			{
 				perror("malloc");

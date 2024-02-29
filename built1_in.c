@@ -49,7 +49,7 @@ int current_cd(data_t *d)
 
 int my_his_list(data_t *d)
 {
-	linked_str *current = d->list_his;
+	stringnode_t *current = d->list_his;
 	int file_des = STDOUT_FILENO; /*descriptor for output*/
 
 	while (current != NULL)

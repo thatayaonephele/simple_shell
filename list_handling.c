@@ -7,10 +7,10 @@
  * Return: linked list size
  */
 
-size_t get_list_len(const linked_str *head_node)
+size_t get_list_len(const stringnode_t *head_node)
 {
 	size_t count;
-	const linked_str *current_node;
+	const stringnode_t *current_node;
 
 	count = 0;
 
@@ -31,11 +31,11 @@ size_t get_list_len(const linked_str *head_node)
  * Return: An array of stringed characters
  */
 
-char **list_to_str(linked_str *my_head)
+char **list_to_str(stringnode_t *my_head)
 {
 	int num_nodes = 0;
 	int i;
-	linked_str *current_node = my_head;
+	stringnode_t *current_node = my_head;
 	char **str_array;
 
 	while (current_node != NULL)
@@ -70,10 +70,10 @@ char **list_to_str(linked_str *my_head)
  * Return: Nothing (void)
  */
 
-void free_mem(linked_str **h)
+void free_mem(stringnode_t **h)
 {
-	linked_str *current = *h;
-	linked_str *next;
+	stringnode_t *current = *h;
+	stringnode_t *next;
 
 	while (current != NULL)
 	{

@@ -9,7 +9,7 @@
 
 void free_data(data_t *data, int x)
 {
-	linked_str *current_his, *next_his;
+	stringnode_t *current_his, *next_his;
 
 	if (!data)
 		return;

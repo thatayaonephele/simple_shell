@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * str_len - A function that evaluates the string length of inputed char data
  * @chr_str: The input string parameter to be evaluated

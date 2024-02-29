@@ -7,7 +7,7 @@
  *Return: The node index if successful,else -1 if unsuccessful
  */
 
-ssize_t find_index_node(linked_str *h, linked_str *my_node)
+ssize_t find_index_node(stringnode_t *h, stringnode_t *my_node)
 {
 	size_t x = 0;
 
@@ -27,7 +27,7 @@ ssize_t find_index_node(linked_str *h, linked_str *my_node)
  * Return: The macthed my_node ptr on success, else null
  */
 
-linked_str *node_starts_with(linked_str *my_node, char *sub_str, char chr)
+stringnode_t *node_starts_with(stringnode_t *my_node, char *sub_str, char chr)
 {
 	char *ptr = NULL;
 
@@ -49,12 +49,11 @@ linked_str *node_starts_with(linked_str *my_node, char *sub_str, char chr)
  *
  * Return: The linked list size on success,else NULL on failuire
  */
-
-linked_str *add_node(linked_str **node_h, char *s, int n)
+stringnode_t *add_node(stringnode_t **node_h, char *s, int n)
 {
-	linked_str *new_node, *current;
+	stringnode_t *new_node, *current;
 
-	new_node = (linked_str *)malloc(sizeof(linked_str));
+	new_node = (stringnode_t *)malloc(sizeof(stringnode_t));
 	if (new_node == NULL)
 		return (NULL);
 

@@ -25,8 +25,8 @@ char **find_env(data_t *d)
 
 int del_env(data_t *d, char *str_env_var)
 {
-	linked_str *current = d->_env;
-	linked_str *prev = NULL;
+	stringnode_t *current = d->_env;
+	stringnode_t *prev = NULL;
 
 	/*search for the enviroment variable*/
 	while (current != NULL)

@@ -41,17 +41,6 @@ char *cpy_str(char *destination, char *source)
 	return (destination);
 }
 /**
- * str_len - Determines string length of input
- * @chr_str: The input string parameter to be evaluated
- *
- * Return: The input string parameter lenth
- */
-
-int str_len(char *chr_str)
-{
-}
-
-/**
  * cat_str - A function that returns 2 concatenated strings
  * @string1: the 1st destination string parameter
  * @string2: the 2nd source string parameter

@@ -6,7 +6,7 @@
  * Return: 0 on success print, 1 on failed display
  */
 
-int display_alias(linked_str *ll_node)
+int display_alias(stringnode_t *ll_node)
 {
 	int file_des = STDOUT_FILENO;
 
@@ -29,8 +29,8 @@ int display_alias(linked_str *ll_node)
 
 int add_alias(data_t *d, char *s)
 {
-	linked_str *new_alias;
-	linked_str *current;
+	stringnode_t *new_alias;
+	stringnode_t *current;
 	char *dup_s;
 
 	if (d == NULL)
@@ -41,7 +41,7 @@ int add_alias(data_t *d, char *s)
 	{
 		return (1);
 	}
-	new_alias = (linked_str *)malloc(sizeof(linked_str));
+	new_alias = (stringnode_t *)malloc(sizeof(stringnode_t));
 	if (new_alias == NULL)
 	{
 		return (1);
@@ -80,8 +80,8 @@ int add_alias(data_t *d, char *s)
 
 int del_alias(data_t *d, char *s)
 {
-	linked_str *curr;
-	linked_str *prev;
+	stringnode_t *curr;
+	stringnode_t *prev;
 
 	if (d == NULL)
 	{
