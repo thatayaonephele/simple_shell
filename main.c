@@ -18,7 +18,7 @@ int main(void)
 
 		if (read(STDIN_FILENO, command, BUFFER_SIZE) == -1)
 		{
-			write(STDOUT_FILE, "\n", 1);
+			write(STDOUT_FILENO, "\n", 1);
 			break; /*handle "end of file" condition*/
 		}
 		command[strcspn(command, "\n")] = '\0'; /*remove trailing newline character*/
@@ -27,8 +27,8 @@ int main(void)
 
 		if (child_pid < 0)
 		{
-			perreor("fork");
-			_exit(EXIT_failure);
+			perror("fork");
+			_exit(EXIT_FAILURE);
 		}
 		else if
 			(child_pid == 0)

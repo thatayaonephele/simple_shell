@@ -59,7 +59,7 @@ int append_env_list(data_t *d)
 	for (i = 0; d->environ[i] != NULL; i++)
 	{
 		char *env_var = d->environ[i];
-		char *name = strtok(env_var, "=");
+		char *name = strtok(_env, "=");
 		char *value = strtok(NULL, "=");
 
 		if (name && value)

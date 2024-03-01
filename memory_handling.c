@@ -26,7 +26,7 @@ void *mem_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	free(ptr); /*Deallocate the memory*/
 	ptr = malloc(new_size);
-	if !(ptr) /*Test for mem alloc success*/
+	if (!(ptr)) /*Test for mem alloc success*/
 		return;
 	return (ptr);
 }

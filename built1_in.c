@@ -7,13 +7,13 @@
  */
 int _change_dir(data_t *d)
 {
-	if (d == NULL || d->path == NULL)
+	if (d == NULL || d->cmd_path == NULL)
 	{
 		write(STDERR_FILENO, "Invalid data_t or path argument.\n",
 				strlen("Invalid data_t or path argument.\n"));
 		return (-1);
 	}
-	if (chdir(d->path) == -1)
+	if (chdir(d->cmd_path) == -1)
 	{
 		char err_msg[] = "chdir: Error chnaging directory\n";
 
@@ -31,9 +31,9 @@ int _change_dir(data_t *d)
 
 int current_cd(data_t *d)
 {
-	if (d != NULL && d->path != NULL)
+	if (d != NULL && d->cmd_path != NULL)
 	{
-		if (chdir(d->path) == 0)
+		if (chdir(d->cmd_path) == 0)
 		{
 			return (0);
 		}
@@ -49,7 +49,7 @@ int current_cd(data_t *d)
 
 int my_his_list(data_t *d)
 {
-	stringnode_t *current = d->list_his;
+	stringnode_t *current = d->node_his;
 	int file_des = STDOUT_FILENO; /*descriptor for output*/
 
 	while (current != NULL)

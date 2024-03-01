@@ -15,7 +15,7 @@ size_t display_list(const stringnode_t *head_node)
 		my_puts(num_converter(head_node->n, 10, 0));
 		_putchar(':');
 		_putchar(' ');
-		if (!(head_node->s) == true)
+		if (!(head_node->s))
 			my_puts("(nil)");
 		else
 			my_puts(head_node->s);

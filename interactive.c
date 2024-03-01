@@ -8,11 +8,10 @@
 
 int int_sh(data_t *d)
 {
-	if ((d->r_fd == 0 | d->r_fd == 1 | d - r_fd == 2)
+	if ((d->r_fd == 0) | (d->r_fd == 1) | (d - r_fd == 2)
 			&& isatty(STDIN_FILENO) == 1)
 		return (1); /*yes, it means we in interactive mode*/
-	else
-		return (0); /*No it's not thus we not in interactive mode*/
+	return (0); /*No it's not thus we not in interactive mode*/
 }
 /**
  * delim_check - Verfies if delimeter(s) are present in a set of characters
@@ -75,9 +74,9 @@ int my_atoi(char *str)
 {
 	int x; /*The start index loop variable*/
 	unsigned int z = 0; /*The result*/
-	int i = 1; /*The pos or neg sign*/
+	unsigned int i = 1; /*The pos or neg sign*/
 	int y = 0; /*The string-format flag*/
-	int j; /*The output of the string conversion*/
+	unsigned int j; /*The output of the string conversion*/
 
 	while (str[x] != '\0' && y != 2)
 	{

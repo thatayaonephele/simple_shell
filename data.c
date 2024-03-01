@@ -18,7 +18,7 @@ void free_data(data_t *data, int x)
 	{
 		free(data->arg);
 		free(data->argv);
-		free(data->path);
+		free(data->cmd_path);
 		free(data->file_name);
 		free(data->_env);
 	}
