@@ -19,20 +19,20 @@ ssize_t g_n_i(stringnode_t *h, stringnode_t *my_node)
     return (-1);
 }
 /**
- * node_starts_with - Return a node based on  a desired sub str matching prefix
+ * n_s_w - Return a node based on  a desired sub str matching prefix
  * @my_node: The ptr pointing to the head of the linked list
  * @sub_str: The desired matching search string
  * @chr: The preceeding char after matching is completed
  * Return: The macthed my_node ptr on success, else null
  */
 
-stringnode_t *node_starts_with(stringnode_t *my_node, char *sub_str, char chr)
+stringnode_t *n_s_w(stringnode_t *my_node, char *sub_str, char chr)
 {
 	char *ptr = NULL;
 
-	for (; my_node; my_node = my_node->next)
+	for (; my_node; my_node = (*my_node).next)
 	{
-		ptr = hay_start(my_node->s, sub_str);
+		ptr = hay_start(*(my_node).s, sub_str);
 		if (ptr && chr == -1)
 			return (my_node);
 		if (*ptr == chr)

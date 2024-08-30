@@ -43,20 +43,20 @@ void my_puts(char *s)
 }
 /**
  *fd_puts - Write out file descriptor to target destination the inputed string
- * @s: The inputed string parameter to be displayed
+ * @str: The inputed string parameter to be displayed
  * @file_des: The file descriptor parameter
  * Return: The amount of characters parsed to the function
  */
-
-int fd_puts(char *s, int file_des)
+int fd_puts(char *str, int file_des)
 {
-	int x = 0;
+    int x = 0;
 
-	if (s == NULL)
-		return (0);
-	while (!(*s) == false)
-	{
-		x = x + fd_put(*s++, file_des);
-	}
-	return (x);
+    if (str == NULL)
+        return (0);
+
+    for (; *str; str++)
+    {
+        x += fd_put(*str, file_des);
+    }
+    return (x);
 }

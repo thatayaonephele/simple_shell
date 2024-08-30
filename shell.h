@@ -110,7 +110,7 @@ int my_atoi(char *);
 /*node.c*/
 ssize_t g_n_i(stringnode_t *, stringnode_t *);
 char *hay_start(const char *, const char *);
-stringnode_t *node_starts_with(stringnode_t *, char *, char);
+stringnode_t *n_s_w(stringnode_t *, char *, char);
 stringnode_t *add_node(stringnode_t **node_h, char *s, int n);
 stringnode_t *app_node_end(stringnode_t **, const char *, int);
 int delete_node_at_index(stringnode_t **, unsigned int);
