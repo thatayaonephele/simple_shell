@@ -107,7 +107,7 @@ int int_sh(data_t *);
 int delim_check(char, char *);
 int my_atoi(char *);
 /*node.c*/
-ssize_t find_index_node(stringnode_t *, stringnode_t *);
+ssize_t g_n_i(stringnode_t *, stringnode_t *);
 stringnode_t *node_starts_with(stringnode_t *, char *, char);
 stringnode_t *add_node(stringnode_t **node_h, char *s, int n);
 stringnode_t *app_node_end(stringnode_t **, const char *, int);

@@ -1,23 +1,22 @@
 #include "shell.h"
 
 /**
- *find_index_node - A function that determines the linked list node index
+ *g_n_i - A function that determines the linked list node index
  *@h: The pointer pointing to node of linked List head address
  *@my_node: The pointer pointing to node of the linked List address
  *Return: The node index if successful,else -1 if unsuccessful
  */
-
-ssize_t find_index_node(stringnode_t *h, stringnode_t *my_node)
+ssize_t g_n_i(stringnode_t *h, stringnode_t *my_node)
 {
-	size_t x = 0;
+    size_t x;
 
-	for (; h != NULL; x++)
-	{
-		if (h == my_node) /*search for a head and node match*/
-			return (x); /*if match found thats the index*/
-		h = h->next; /*next index pos becomes the head*/
-	}
-	return (-1);
+    for (x = 0; head; x++)
+    {
+        if (h == my_node) /*search for a head and node match*/
+            return (x); /*if match found thats the index*/
+        h = (*h).next; /*next index pos becomes the head*/
+    }
+    return (-1);
 }
 /**
  * node_starts_with - Return a node based on  a desired sub str matching prefix
