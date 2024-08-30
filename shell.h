@@ -106,17 +106,20 @@ void display_err(data_t *, char *);
 int int_sh(data_t *);
 int delim_check(char, char *);
 int my_atoi(char *);
+
 /*node.c*/
 ssize_t g_n_i(stringnode_t *, stringnode_t *);
+char *hay_start(const char *, const char *);
 stringnode_t *node_starts_with(stringnode_t *, char *, char);
 stringnode_t *add_node(stringnode_t **node_h, char *s, int n);
 stringnode_t *app_node_end(stringnode_t **, const char *, int);
 int delete_node_at_index(stringnode_t **, unsigned int);
+
+
 /**string_handling.c*/
 int lexi_cmp(char *, char *);
 char *cpy_str(char *, char *);
 char *cat_str(char *, char *);
-char *hay_start(const char *, const char *);
 /**print_strings.c*/
 int _putchar(char);
 void my_puts(char *);

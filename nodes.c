@@ -40,6 +40,23 @@ stringnode_t *node_starts_with(stringnode_t *my_node, char *sub_str, char chr)
 	}
 	return (NULL);
 }
+
+/**
+ * hay_start - Function that verifies if needle beggins with haystack
+ * @haystack: search string parameter
+ * @needle: Sub-string parameter to be matched
+ * Return: NULL or an address of preceeding char of haystack
+ */
+char *hay_start(const char *h_s, const char *needle)
+{
+    for (; *needle; needle++, h_s++)
+    {
+        if (*needle != *h_s)
+            return (NULL);
+    }
+    return ((char *)h_s);
+}
+
 /**
  * add_node - Appends to the linked list start index a new node
  * @node_h: The pointer pointing to node of the linked List head address
