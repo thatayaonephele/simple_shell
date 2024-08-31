@@ -28,3 +28,30 @@ char *_strcat(char *dest, char *src)
 	dest[x] = '\0'; /*set last dest val at index x to null term chr*/
 	return (dest); /*print the desired concatenated str*/
 }
+/**
+ *_str_ncat - A function that concatenates 2 given strings
+ *@end_pos: Sub string 1
+ *@start_pos: Sub string 2
+ *@num: The byte size to be fed into the buffer
+ *Return: The result of the 2 strings concatenated
+ */
+char *_str_ncat(char *end_pos, char *start_pos, int num)
+{
+    char *z = end_pos;
+    int y = 0, x = 0;
+
+    while (end_pos[x] != '\0')
+        x++;
+    
+    while (start_pos[y] != '\0' && y < num)
+    {
+        end_pos[x] = start_pos[y];
+        x++;
+        y++;
+    }
+
+    if (y < num)
+        end_pos[x] = '\0';
+    
+    return (z);
+}
