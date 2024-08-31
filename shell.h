@@ -162,9 +162,9 @@ size_t display_list(const stringnode_t *);
 void free_str_array(char **);
 
 /**data.c*/
-void data_clear(data_t *);
 void free_data(data_t *, int);
 void data_set(data_t *, char **);
+void clear_d(data_t *);
 
 /**environ_handling.c*/
 int current_env(data_t *);

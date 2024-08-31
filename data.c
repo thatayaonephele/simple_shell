@@ -33,3 +33,14 @@ void free_data(data_t *data, int x)
 	}
 	free(data);
 }
+/**
+ * clear_d - A function that initializes the data_t structure
+ * @d: The struct parameter addr location
+ */
+void clear_d(data_t *d)
+{
+        (*d).arg = NULL;
+        (*d).argv = NULL;
+        (*d).cmd_path = NULL;
+        (*d).argc = 0;
+}
