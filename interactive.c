@@ -19,23 +19,16 @@ int int_sh(data_t *d)
  * @delimeter: The string delimeter parameter
  * Return: 1 if delimeters are present, else 0
  */
-
 int delim_check(char ch, char *delimeter)
 {
-	if (!(*delimeter))
-	{
-		return (0);
-	}
-	else
-	{
-		while (!(*delimeter) == false)
-		{
-			if (*delimeter++ == ch)
-				return (1);
-		}
-	}
-	return (0);
+        for (; *delimeter; delimeter++)
+        {
+                if (*delimeter == ch)
+                        return (1);
+        }
+        return (0);
 }
+
 /**
  * alph_check - Verifies if data is alphabet type
  * @ch: The input character to be evaluated
