@@ -1,17 +1,20 @@
 #include "shell.h"
 /**
  * str_len - A function that evaluates the string length of inputed char data
- * @chr_str: The input string parameter to be evaluated
+ * @tmp_str: The input string parameter to be evaluated
  * Return: The input string parameter length
  */
-int str_len(char *chr_str)
+int str_len(char *tmp_str)
 {
-	int length; /*Iterate thru str until the null terminator is reached*/
+    int x = 0; /*Iterate thru str til the null termin reached*/
 
-	for (length = 0; *chr_str != 0; length++)
-		chr_str++; /*increment counter var to count chrs*/
-	return (length); /*The string length (if any)*/
+    if (tmp_str == NULL)
+        return (0);
+
+    for (; *tmp_str++; x++); /*incr count var to count chrs*/
+    return (x); /*The string length (if any)*/
 }
+
 char *_str_chr(char *sub_str, char chr)
 {
 	for(; *sub_str++ != '\0'; *sub_str++)
