@@ -27,3 +27,26 @@ size_t display_list(const stringnode_t *head_node)
     return (x);
 }
 
+/**
+ * char_dup - A functin that duplicates inputed chars
+ * @str_path: The parameter representing the PATH str
+ * @src: The commencing index parameter
+ * @dest: The ending index parameter
+ * Return: The ptr pointing to the new buffer
+ */
+char *char_dup(char *str_path, int src, int dest)
+{
+
+    int x = 0, z = 0;
+    static char my_buff[1024];
+
+    x = src;
+    while (x < dest)
+    {
+        if (*(str_path + x) != ':')
+            *(my_buff + z++) = *(str_path + x);
+        x++;
+    }
+    *(my_buff + z) = '\0';
+    return (my_buff);
+}
