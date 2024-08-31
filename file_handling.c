@@ -7,22 +7,66 @@
  */
 
 size_t display_list(const stringnode_t *head_node)
+/**
+ * display_list - Displays all elements stored in the linked_str list
+ * @head_node: A pointer pointing to the address of the 1st Linked list node
+ * Return: Linked List size
+ */
+
+size_t display_list(const stringnode_t *head_node)
 {
-	size_t x = 0;
+    size_t x = 0;
 
-	while ((!head_node) == false)
-	{
-		my_puts(num_converter(head_node->n, 10, 0));
-		_putchar(':');
-		_putchar(' ');
-		if (!(head_node->s))
-			my_puts("(nil)");
-		else
-			my_puts(head_node->s);
+    for (; head_node; head_node = (*head_node).next, x++)
+    {
+        my_puts(num_converter((*head_node).n, 10, 0));
+        _putchar(':');
+        _putchar(' ');
 
-		my_puts("\n");
-		head_node = head_node->next; /**head node becomes the next node on list*/
-		x++;
-	}
-	return (x);
+        if ((*head_node).str)
+            my_puts((*head_node).str);
+        else
+            my_puts("(nil)");
+
+        my_puts("\n");
+    }
+
+    return (x);
 }
+
+#include "shell.h"
+
+ /**
+ * display_list - Displays all elements stored in the linked_str list
+ * @head_node: A pointer pointing to the address of the 1st Linked list node
+ * Return: Linked List size
+ */
+
+size_t display_list(const stringnode_t *head_node)
+/**
+ * display_list - Displays all elements stored in the linked_str list
+ * @head_node: A pointer pointing to the address of the 1st Linked list node
+ * Return: Linked List size
+ */
+
+size_t display_list(const stringnode_t *head_node)
+{
+    size_t x = 0;
+
+    for (; head_node; head_node = (*head_node).next, x++)
+    {
+        my_puts(num_converter((*head_node).n, 10, 0));
+        _putchar(':');
+        _putchar(' ');
+
+        if ((*head_node).str)
+            my_puts((*head_node).str);
+        else
+            my_puts("(nil)");
+
+        my_puts("\n");
+    }
+
+    return (x);
+}
+

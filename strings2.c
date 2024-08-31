@@ -12,3 +12,11 @@ int str_len(char *chr_str)
 		chr_str++; /*increment counter var to count chrs*/
 	return (length); /*The string length (if any)*/
 }
+char *_str_chr(char *sub_str, char chr)
+{
+	for(; *sub_str++ != '\0'; *sub_str++)
+	{
+		if (*sub_str == chr)
+        		return (sub_str);
+	}
+}

@@ -50,15 +50,21 @@ char *num_converter(long int n, int my_radix, int my_bool)
  *Return: 0 On success, else 1 on failuire
  */
 
+/**
+ * _myhelp - changes the current directory of the process
+ * @d: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ *  Return: Always 0
+ */
 int _myhelp(data_t *d)
 {
-	char **str_arg;
+    char **str_arg;
 
-	str_arg = d->argv; /**set the argument string to arg vector in struct*/
-	my_puts("Help  not fully functional, call Motalepule Lmao ka dlala \n");
-	if (!(1))
-		my_puts(*str_arg);
-	return (0);
+    str_arg = (*d).argv;
+    my_puts("help function call test! \n");
+    if (false)
+        my_puts(*str_arg); /* temp att_unused workaround */
+    return (0);
 }
 /**
  * comment_remover - Substitute 1st occurance of '#' with null termination char

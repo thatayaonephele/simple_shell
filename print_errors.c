@@ -28,18 +28,18 @@ int _putchar(char chr)
 
 /**
  * my_puts - A function that takes an input string & returns it on std out
- * @s: The inputed string var we wish to see on stdout
+ * @str: The inputed string var we wish to see on stdout
  * Return: Void Function (No Return)
  */
 
-void my_puts(char *s)
+void my_puts(char *str)
 {
 	int x = 0;
 
-	if (s == NULL)
+	if (str == NULL)
 		return;
-	for (; s[x] != '\0'; x++)
-		_putchar(s[x]);
+	for (; str[x] != '\0'; x++)
+		_putchar(str[x]);
 }
 /**
  *fd_puts - Write out file descriptor to target destination the inputed string
