@@ -60,3 +60,26 @@ int fd_puts(char *str, int file_des)
     }
     return (x);
 }
+/**
+ * fd_put - writes the character ch to the given file_des
+ * @ch: The character to print
+ * @file_des: The file descriptor being written to
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int fd_put(char ch, int file_des)
+{
+    static int x;
+    static char my_buf[WRITE_BUF_SIZE];
+
+    if (ch == BUF_FLUSH || x >= WRITE_BUF_SIZE)
+    {
+        write(file_des, my_buf, x);
+        x = 0;
+    }
+    if (ch != BUF_FLUSH)
+    {
+        buf[x++] = ch;
+    }
+    return (1);
+}
