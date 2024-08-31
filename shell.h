@@ -132,7 +132,6 @@ void comment_remover(char *);
 int print_decimal(int, int);
 
 /**list_handling.c*/
-size_t get_list_len(const stringnode_t *);
 char **list_to_str(stringnode_t *);
 size_t display_str_element(const stringnode_t *);
 void free_mem(stringnode_t **);
