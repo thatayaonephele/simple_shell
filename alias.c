@@ -2,22 +2,31 @@
 
 /**
  * display_alias - A function that prints the alias
- * @ll_node: The linked list node belonging to the alias
+ * @my_node: The linked list node belonging to the alias
  * Return: 0 on success print, 1 on failed display
  */
 
-int display_alias(stringnode_t *ll_node)
+int display_alias(stringnode_t *my_node)
 {
-	int file_des = STDOUT_FILENO;
 
-	while (ll_node != NULL)
-	{
-		write(file_des, "Alias: ", 7);
-		write(file_des, ll_node->s, str_len(ll_node->s));
-		write(file_des, "\n", 1);
-		ll_node = ll_node->next;
-	}
-	return (0);
+        char *x = NULL, *ptr = NULL;
+
+        if (my_node != NULL)
+        {
+                ptr = _str_chr((*my_node).str, '=');
+                
+                x = (*my_node).str;
+                while (x <= ptr)
+                {
+                        _putchar(*x);
+                        x++;
+                }
+                _putchar('\'');
+                my_puts(ptr + 1);
+                my_puts("'\n");
+                return (0);
+        }
+        return (1);
 }
 /**
  * add_alias - A function that attaches the alias functionality to a string
