@@ -75,3 +75,14 @@ int mimic_alias(data_t *d)
 
 	return (result);
 }
+/**
+ * my_his - A function that lists history, shows 1 cmd/line, followed
+ *              by line no.s,commencing at 0.
+ * @d: The variable address of the data structure parameter
+ * Return: Always (0)
+ */
+int my_his(data_t *d)
+{
+        display_list((*d).node_his);
+        return (0);
+}

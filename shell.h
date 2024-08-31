@@ -30,14 +30,14 @@ extern char **environ;
 int hshloop(char **);
 /**
  * struct str_link - Structure to represent a linked list
- * @s: Pointer to a character string
+ * @str: Pointer to a character string
  * @n: Integer value associated with the string
  *
  * @next: Pointer to the next node in the linked list
  */
 typedef struct str_link
 {
-	char *s;
+	char *str;
 	int n;
 	struct str_link *next;
 } stringnode_t;

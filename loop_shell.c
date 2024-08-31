@@ -51,7 +51,7 @@ int get_built_in(data_t *d)
 		{"exit", _exit_shell},
 		{"env", my_his_list},
 		{"help", _myhelp},
-		{"history", my_his_list},
+		{"history", my_his},
 		{"setenv", set_my_env},
 		{"unsetenv", unset_my_env},
 		{"cd", _change_dir},
