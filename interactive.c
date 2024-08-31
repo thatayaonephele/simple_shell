@@ -32,31 +32,16 @@ int delim_check(char ch, char *delimeter)
 /**
  * alph_check - Verifies if data is alphabet type
  * @ch: The input character to be evaluated
- *
  * Return: 1 if char data is alpha type, else 0 if false
  */
-
 int alph_check(int ch)
 {
-	int A = 65;
-	int Z = 90;
-	int a = 97;
-	int z = 122;
-
-	if ((ch >= A) && (ch <= Z))
-	{
-		return (1);
-	}
-	else if
-		((ch >= a) && (ch <= z))
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
+    if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
+        return 1;
+    else
+        return 0;
 }
+
 /**
  *my_atoi - Makes an integer to string coversion
  *@str: The desired string we wish to convert to
