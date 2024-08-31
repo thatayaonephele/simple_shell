@@ -1,28 +1,20 @@
 #include "shell.h"
 
 /**
- * get_list_len - Gets the linked list length
- * @head_node: A pointer pointing to the address of the 1st linked list node
+ * get_list_len - determines length of linked list
+ * @head_node: pointer to first node
  *
- * Return: linked list size
+ * Return: size of list
  */
-
 size_t get_list_len(const stringnode_t *head_node)
 {
-	size_t count;
-	const stringnode_t *current_node;
+    size_t x = 0;
 
-	count = 0;
-
-	/*traverse the linked list & count nodes*/
-	current_node = head_node;
-
-	while (current_node != NULL)
-	{
-		count++;
-		current_node = current_node->next;
-	}
-	return (count);
+    for (; head_node != NULL; head_node = (*head_node).next)
+    {
+        x++;
+    }
+    return (x);
 }
 /**
  * list_to_str - Prints input list as an array of stringed chars
