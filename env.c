@@ -31,7 +31,7 @@ int del_env(data_t *d, char *str_env_var)
 	/*search for the enviroment variable*/
 	while (current != NULL)
 	{
-		if (strcmp(current->s, str_env_var) == 0)
+		if (lexi_cmp(current->s, str_env_var) == 0)
 		{
 			/*remove the env variable from linked list*/
 			if (prev == NULL)

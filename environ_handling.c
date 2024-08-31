@@ -24,7 +24,7 @@ int unset_my_env(data_t *d)
 
 	for (i = 0, j = 0; d->environ[i] != NULL; i++)
 	{
-		if (strcmp(d->environ[i], d->arg) != 0)
+		if (lexi_cmp(d->environ[i], d->arg) != 0)
 		{
 			new_env[j] = d->environ[i];
 			j++;
