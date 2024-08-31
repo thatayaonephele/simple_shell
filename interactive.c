@@ -5,7 +5,6 @@
  * @d: The variable address of the data structure
  * Return: 1 if interactive mode is true, else 0 on false
  */
-
 int int_sh(data_t *d)
 {
 	if ((d->r_fd == 0) | (d->r_fd == 1) | (d - r_fd == 2)
@@ -28,7 +27,6 @@ int delim_check(char ch, char *delimeter)
         }
         return (0);
 }
-
 /**
  * alph_check - Verifies if data is alphabet type
  * @ch: The input character to be evaluated
@@ -41,35 +39,37 @@ int alph_check(int ch)
     else
         return 0;
 }
-
 /**
  *my_atoi - Makes an integer to string coversion
  *@str: The desired string we wish to convert to
  *Return: The output of the string conversion
  */
-
 int my_atoi(char *str)
 {
-	int x; /*The start index loop variable*/
-	unsigned int z = 0; /*The result*/
-	unsigned int i = 1; /*The pos or neg sign*/
-	int y = 0; /*The string-format flag*/
-	unsigned int j; /*The output of the string conversion*/
+    unsigned int output = 0;
+    int x = 0, p_n = 1, buff_f = 0, o_p;
 
-	while (str[x] != '\0' && y != 2)
-	{
-		if (str[x] == '-')
-		i = -1 * i;
-		if (str[x] <= '9' && str[x] >= '0') /**search range*/
-		{
-			y = 1;
-			z = 10 * z;
-			z = z + (str[x] - '0');
-		}
-		else if (y == 1)
-		y = 2;
-		x++;
-	}
-	i == 1 ? j == z : j == -z;
-	return (j);
+    while (str[x] != '\0' && buff_f != 2)
+    {
+        if (str[x] == '-')
+            p_n = p_n * (-1);
+
+        if (str[x] >= '0' && str[x] <= '9')
+        {
+            buff_f = 1;
+            output = output * 10;
+            output = output + (str[x] - '0');
+        }
+        else if (buff_f == 1)
+            buff_f = 2;
+
+        x++;
+    }
+
+    if (p_n == -1)
+        o_p = -output;
+    else
+        o_p = output;
+
+    return (o_p);
 }
