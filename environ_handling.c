@@ -43,40 +43,21 @@ int unset_my_env(data_t *d)
  * @d: The variable address of the data structure parameter
  * Return: Always Success (0)
  */
-
 int append_env_list(data_t *d)
 {
-	int i;
-	size_t env_size = 0;
-	stringnode_t *new_node;
+    size_t x;
+    stringnode_t *my_node = NULL;
 
-	if (!d)
-		return (1);
+    x = 0;
 
-	for (i = 0; d->environ[i] != NULL; i++)
-		env_size++;
+    while (environ[x])
+    {
+        add_node_end(&my_node, environ[x], 0);
+        x++;
+    }
 
-	for (i = 0; d->environ[i] != NULL; i++)
-	{
-		char *env_var = d->environ[i];
-		char *name = strtok(_env, "=");
-		char *value = strtok(NULL, "=");
-
-		if (name && value)
-		{
-			new_node = malloc(sizeof(stringnode_t));
-			if (!new_node)
-			{
-				perror("malloc");
-				return (1);
-			}
-			new_node->s = name;
-			new_node->n = env_size;
-			new_node->next = d->_env;
-			d->_env = new_node;
-		}
-	}
-	return (0);
+    (*d)._env = my_node;
+    return (0);
 }
 /**
  * set_my_env - Initialize or modify a variable environment
@@ -130,4 +111,25 @@ int current_env(data_t *d)
 {
         display_str_element((*d)._env);
         return (0);
+}
+/**
+ * est_env_val - gets the value of an environment variable
+ * @d: The parameter struct
+ * @my_str: Name of the environment variable
+ *
+ * Return: the value
+ */
+char *est_env_val(data_t *d, const char *my_str)
+{
+    char *ptr;
+    stringnode_t *my_node = (*d)._env;
+
+    while (my_node != NULL)
+    {
+        ptr = hay_start((*my_node).str, my_str);
+        if (ptr && *ptr)
+            return (ptr);
+        my_node = (*my_node).next;
+    }
+    return (NULL);
 }
