@@ -121,3 +121,13 @@ int set_my_env(data_t *d)
 	}
 	return (0);
 }
+/**
+ * current_env - Displays the environment of the current directory
+ * @d: parameter struct
+ * Return: Always (0)
+ */
+int current_env(data_t *d)
+{
+        display_str_element((*d)._env);
+        return (0);
+}

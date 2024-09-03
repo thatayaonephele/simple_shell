@@ -1,0 +1,76 @@
+alias.c:	if (d->my_alias == NULL)
+alias.c:		d->my_alias = new_alias;
+alias.c:		current = d->my_alias;
+alias.c:	curr = d->my_alias;
+alias.c:				d->my_alias = curr->next;
+built1_in.c:	if (d == NULL || d->cmd_path == NULL)
+built1_in.c:	if (chdir(d->cmd_path) == -1)
+built1_in.c:	if (d != NULL && d->cmd_path != NULL)
+built1_in.c:		if (chdir(d->cmd_path) == 0)
+built1_in.c:	stringnode_t *current = d->node_his;
+built1_in.c:	result = display_alias(d->my_alias);
+env.c:	if (!d->environ || d->changed_env)
+env.c:		d->environ = list_to_str(d->_env);
+env.c:		d->changed_env = 0;
+env.c:	return (d->environ);
+env.c:	stringnode_t *current = d->_env;
+env.c:				d->_env = current->next;
+env.c:	for (i = 0; d->environ[i] != NULL; i++)
+env.c:	for (i = 0; d->environ[i] != NULL; i++)
+env.c:		new_environ[i] = d->environ[i];
+env.c:	free(d->environ);
+env.c:	d->environ = new_environ;
+environ_handling.c:	if (d->arg == NULL)
+environ_handling.c:	for (i = 0; d->environ[i] != NULL; i++)
+environ_handling.c:	for (i = 0, j = 0; d->environ[i] != NULL; i++)
+environ_handling.c:		if (lexi_cmp(d->environ[i], d->arg) != 0)
+environ_handling.c:			new_env[j] = d->environ[i];
+environ_handling.c:	free(d->environ);
+environ_handling.c:	d->environ = new_env;
+environ_handling.c:	for (i = 0; d->environ[i] != NULL; i++)
+environ_handling.c:	for (i = 0; d->environ[i] != NULL; i++)
+environ_handling.c:		char *env_var = d->environ[i];
+environ_handling.c:			new_node->next = d->_env;
+environ_handling.c:			d->_env = new_node;
+environ_handling.c:	if (d == NULL || d->str_env_var == NULL || d->str_var == NULL)
+environ_handling.c:	while (d->environ[i] != NULL)
+environ_handling.c:		if (lexi_cmp(d->environ[i], d->str_env_var) == 0)
+environ_handling.c:			free(d->environ[i]);
+environ_handling.c:			d->environ[i] = _str_ncpy(NULL, d->str_env_var, str_len(d->str_env_var));
+environ_handling.c:			d->environ[i] = _str_ncpy(d->environ[i], "=", 1);
+environ_handling.c:			d->environ[i] = _str_ncpy(d->environ[i], d->str_var, str_len(d->str_var));
+environ_handling.c:	d->environ[i] = _str_ncpy(NULL, d->str_env_var, str_len(d->str_env_var));
+environ_handling.c:	d->environ[i] = _str_ncpy(d->environ[i], "=", 1);
+environ_handling.c:	d->environ[i] = _str_ncpy(d->environ[i], d->str_var, str_len(d->str_var));
+environ_handling.c:	d->environ[i + 1] = NULL;
+interactive.c:	if ((d->r_fd == 0) | (d->r_fd == 1) | (d - r_fd == 2)
+loop_shell.c:		if (d->cmd_path != NULL)
+loop_shell.c:			execvp(d->cmd_path, d->argv);
+loop_shell.c:			write(STDOUT_FILENO, d->argv[0], str_len(d->argv[0]));
+loop_shell.c:		if (lexi_cmp(d->argv[0], tbl_built_in[x].cmd_flag) == 0)
+loop_shell.c:			d->line_cnt++;
+loop_shell.c:	if (((int_sh(d) == false)) && ((!d->exec_cmd_status) == false))
+loop_shell.c:		exit(d->exec_cmd_status);
+loop_shell.c:		if (d->number_error == -1)
+loop_shell.c:			exit(d->exec_cmd_status);
+loop_shell.c:		exit(d->number_error);
+loop_shell.c:	d->cmd_path  = d->argv[0];
+loop_shell.c:	if (d->flag_line_cnt == 1)
+loop_shell.c:		d->line_cnt++;
+loop_shell.c:		d->flag_line_cnt = 0;
+loop_shell.c:	for (x = 0, z = 0; d->arg[x]; x++)
+loop_shell.c:	for (z = 0, x = 0; d->arg[x]; x++)
+loop_shell.c:		if (!delim_check(d->arg[x], " \t\n"))
+loop_shell.c:	cmd_path  = cmd_path_find(d, est_env_val(d, "PATH="), d->argv[0]);
+loop_shell.c:		d->cmd_path  = cmd_path;
+loop_shell.c:		if (*(d->arg) != '\n')
+loop_shell.c:			d->exec_cmd_status = 127;
+loop_shell.c:		else if ((est_env_val(d, "PATH=") || d->argv[0][0] == '/'
+loop_shell.c:					|| int_sh(d)) && is_file_cmd_exe(d, d->argv[0]))
+loop_shell.c:			d->flag_line_cnt = 1;
+loop_shell.c:			list_his(d, *chr_buffer, d->h_counter++);
+loop_shell.c:			d->chain_buff_cmd = chr_buffer;
+README.md:What is EOF / “end-of-file”?
+README.md:drwx------ 3 root   root   4096 Dec  5 12:09 systemd-private-062a0eca7f2a44349733e78cb4abdff4-colord.service-V7DUzr
+README.md:drwx------ 3 root   root   4096 Dec  5 12:09 systemd-private-062a0eca7f2a44349733e78cb4abdff4-rtkit-daemon.service-ANGvoV
+README.md:drwx------ 3 root   root   4096 Dec  5 12:07 systemd-private-062a0eca7f2a44349733e78cb4abdff4-systemd-timesyncd.service-CdXUtH
