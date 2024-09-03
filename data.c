@@ -44,3 +44,28 @@ void clear_d(data_t *d)
         (*d).cmd_path = NULL;
         (*d).argc = 0;
 }
+/**
+ **_str_ncpy -A function that duplicates a string
+ *@end: the destination string to be copied to
+ *@start: the source string
+ *@chr_amount: the amount of characters to be copied
+ *Return: the concatenated string
+ */
+char *_str_ncpy(char *end, char *start, int chr_amount)
+{
+        int x = 0, y;
+        char *conc_str = end;
+
+        for (x = 0; start[x] != '\0' && x < chr_amount - 1; x++)
+        {
+                end[x] = start[x];
+        }
+        if (x < chr_amount)
+        {
+                for (y = x; y < chr_amount; y++)
+                {
+                        end[y] = '\0';
+                }
+        }
+        return (conc_str);
+}
