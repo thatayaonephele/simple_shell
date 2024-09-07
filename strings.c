@@ -9,12 +9,12 @@ int alph_check(int chr)
 	return ((chr >= 'a' && chr <= 'z') || (chr >= 'A' && chr <= 'Z'));
 }
 /**
- * _strcat - A function that concatenates two strings.
+ * _str_cat - A function that concatenates two strings.
  * @dest : The input destination value
  * @src: The source input value
  * Return: Always Success (0)
  */
-char *_strcat(char *dest, char *src)
+char *_str_cat(char *dest, char *src)
 {
 	int x = 0, y = 0;
 

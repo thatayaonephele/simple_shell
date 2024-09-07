@@ -145,7 +145,7 @@ void str_free(char **);
 
 /**token_handling.c*/
 char **str_token(char *, char *);
-char *_strcat(char *, char *);
+char *_str_cat(char *, char *);
 /**shell_line_handling.c*/
 ssize_t buff_read(data_t *, char *, size_t *);
 void block_ctrl_c(__attribute__((unused))int);
