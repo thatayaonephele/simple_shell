@@ -52,42 +52,7 @@ int append_env_list(data_t *d)
  * Return: 0 on success, else 1 on error
  */
 
-int set_my_env(data_t *d)
-{
-	int i;
 
-	if (d == NULL || d->str_env_var == NULL || d->str_var == NULL)
-		return (1);
-
-	if (unset_my_env(d) != 0)
-		return (1);
-
-	i = 0;
-
-	while (d->environ[i] != NULL)
-	{
-		if (lexi_cmp(d->environ[i], d->str_env_var) == 0)
-		{
-			free(d->environ[i]);
-			d->environ[i] = _str_ncpy(NULL, d->str_env_var, str_len(d->str_env_var));
-			d->environ[i] = _str_ncpy(d->environ[i], "=", 1);
-			d->environ[i] = _str_ncpy(d->environ[i], d->str_var, str_len(d->str_var));
-			return (0);
-		}
-		i++;
-	}
-	d->environ[i] = _str_ncpy(NULL, d->str_env_var, str_len(d->str_env_var));
-	d->environ[i] = _str_ncpy(d->environ[i], "=", 1);
-	d->environ[i] = _str_ncpy(d->environ[i], d->str_var, str_len(d->str_var));
-	d->environ[i + 1] = NULL;
-
-	if (append_env_list(d) != 0)
-	{
-		perror("append_env_list");
-		return (1);
-	}
-	return (0);
-}
 /**
  * current_env - Displays the environment of the current directory
  * @d: parameter struct

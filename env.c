@@ -61,35 +61,46 @@ int del_env(data_t *d, char *str_env_var)
  * Return: Always Success (0)
  */
 
+
+/**
+ * add_env - Establish a new environment variable if it doesn't exist
+ * @d: The variable address of the data structure parameter
+ * @str_env_var: The variable parameter of the string environment
+ * @str_var: The variable value of the string environment
+ *
+ * Return: Always Success (0)
+ */
 int add_env(data_t *d, char *str_env_var, char *str_var)
 {
-	int i;
-	char **new_environ;
-	size_t env_size = 0;
+    char *ptr;
+    stringnode_t *my_node;
+    char *my_buff = NULL;
 
-	if (!d || !str_env_var || !str_var)
-		return (1);
+    if (str_env_var == NULL || str_var == NULL)
+        return (0);
 
-	for (i = 0; d->environ[i] != NULL; i++)
-		env_size++;
+    my_buff = malloc(str_len(str_env_var) + str_len(str_var) + 2);
+    if (my_buff == NULL)
+        return (1);
 
-	new_environ = malloc((env_size + 2) * sizeof(char *));
+    _str_cpy(my_buff, str_env_var);
+    _str_cat(my_buff, "=");
+    _str_cat(my_buff, str_var);
 
-	if (!new_environ)
-		return (1);
+    for (my_node = (*d).env; my_node; my_node = (*my_node).next)
+    {
+        ptr = hay_start((*my_node).str, str_env_var);
+        if (ptr && *ptr == '=')
+        {
+            free((*my_node).str);
+            (*my_node).str = my_buff;
+            (*d).env_changed = 1;
+            return (0);
+        }
+    }
 
-	for (i = 0; d->environ[i] != NULL; i++)
-		new_environ[i] = d->environ[i];
-
-	new_environ[env_size] = _str_ncpy(NULL, str_env_var, str_len(str_env_var));
-	new_environ[env_size] = _str_ncat(new_environ[env_size], "=", 1);
-	new_environ[env_size] = _str_ncat(new_environ[env_size],
-			str_var, str_len(str_var));
-
-	new_environ[env_size + 1] = NULL;
-
-	free(d->environ);
-	d->environ = new_environ;
-
-	return (0);
+    append_node_end(&((*d).env), my_buff, 0);
+    free(my_buff);
+    (*d).env_changed = 1;
+    return (0);
 }
