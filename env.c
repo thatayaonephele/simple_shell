@@ -51,16 +51,6 @@ int del_env(data_t *d, char *str_env_var)
  *
  * Return: Always Success (0)
  */
-
-
-/**
- * add_env - Establish a new environment variable if it doesn't exist
- * @d: The variable address of the data structure parameter
- * @str_env_var: The variable parameter of the string environment
- * @str_var: The variable value of the string environment
- *
- * Return: Always Success (0)
- */
 int add_env(data_t *d, char *str_env_var, char *str_var)
 {
     char *ptr;
