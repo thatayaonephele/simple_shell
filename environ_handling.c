@@ -84,3 +84,32 @@ char *est_env_val(data_t *d, const char *my_str)
     }
     return (NULL);
 }
+/**
+ * w_his -A function that creates an unexisting file, or appends to it
+ * @d: the parameter struct
+ * Return: 1 on success, else -1 on failure
+ */
+int w_his(data_t *d)
+{
+    ssize_t file_des;
+    char *n_o_f = get_history_file(d);
+    stringnode_t *my_node = NULL;
+
+    if (n_o_f == NULL)
+        return (-1);
+
+    file_des = open(n_o_f, O_CREAT | O_TRUNC | O_RDWR, 0644);
+    free(n_o_f);
+    if (file_des == -1)
+        return (-1);
+
+    for (my_node = (*d).history; my_node; my_node = (*my_node).next)
+    {
+        fd_puts((*my_node).str, file_des);
+        fd_put('\n', file_des);
+    }
+
+    fd_put(BUF_FLUSH, file_des);
+    close(file_des);
+    return (1);
+}
