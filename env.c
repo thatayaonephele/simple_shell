@@ -14,43 +14,34 @@ char **find_env(data_t *d)
 	}
 	return (d->environ);
 }
-
 /**
- * del_env - A function that deletes a variable of an enviroment
+ * del_env - A function that deletes a variable of an environment
  * @d: The variable address of the data structure parameter
- * @str_env_var: The variable parameter of the string enviroment
+ * @str_env_var: The variable parameter of the string environment
  *
- * Return: 1 successful deletion, else 0 on failure
+ * Return: 1 on successful deletion, else 0 on failure
  */
-
 int del_env(data_t *d, char *str_env_var)
 {
-	stringnode_t *current = d->_env;
-	stringnode_t *prev = NULL;
+    stringnode_t *my_node = (*d).env;
+    size_t x = 0;
+    char *ptr;
 
-	/*search for the enviroment variable*/
-	while (current != NULL)
-	{
-		if (lexi_cmp(current->s, str_env_var) == 0)
-		{
-			/*remove the env variable from linked list*/
-			if (prev == NULL)
-			{
-				d->_env = current->next;
-			}
-			else
-			{
-				prev->next = current->next;
-			}
-			free(current->s);
-			free(current);
-
-			return (1);
-		}
-		prev = current;
-		current = current->next;
-	}
-	return (0);
+    if (!my_node || !str_env_var)
+        return (0);
+/*search for the enviroment variable*/
+    for (my_node = (*d).env; my_node; my_node = (*my_node).next, x++)
+    {
+        ptr = hay_start((*my_node).str, str_env_var);
+        if (ptr && *ptr == '=')
+        {
+	    /*remove the env variable from linked list*/
+            (*d).env_changed = delete_node_at_index(&((*d).env), x);
+            x = 0;
+            my_node = (*d).env;
+        }
+    }
+    return ((*d).env_changed);
 }
 /**
  * add_env - Establish a new enviroment variable if it doesnt exist
