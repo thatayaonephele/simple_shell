@@ -36,7 +36,7 @@ int del_env(data_t *d, char *str_env_var)
         if (ptr && *ptr == '=')
         {
 	    /*remove the env variable from linked list*/
-            (*d).env_changed = delete_node_at_index(&((*d).env), x);
+            (*d).env_changed = d_n_a_i(&((*d).env), x);
             x = 0;
             my_node = (*d).env;
         }

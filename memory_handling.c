@@ -121,7 +121,7 @@ int r_his(data_t *d)
     (*d).h_counter = my_count;
 
     for (; (*d).h_counter-- >= HIST_MAX;)
-        delete_node_at_index(&(*d).node_his, 0);
+        d_n_a_i(&(*d).node_his, 0);
 
     index_his(d);
     return ((*d).h_counter);

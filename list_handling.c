@@ -79,3 +79,42 @@ void free_mem(stringnode_t **head_ptr)
     *head_ptr = NULL;
 }
 
+/**
+ * d_n_a_i - A function that deletes a node at a specified position
+ * @head: The pointer address parameter to the 1st node 
+ * @j: index position of node to be deleted
+ *
+ * Return: 1 on success, 0 on failure
+ */
+int d_n_a_i(stringnode_t **head, unsigned int j)
+{
+    stringnode_t *my_node, *prev_node;
+    unsigned int x = 0;
+
+    if (!head || *head == NULL)
+        return (0);
+
+    if (!j)
+    {
+        my_node = *head;
+        *head = (*(*head)).next;
+        free((*my_node).str);
+        free(my_node);
+        return (1);
+    }
+
+    my_node = *head;
+    for (; my_node; my_node = (*my_node).next)
+    {
+        if (x == j)
+        {
+            (*prev_node).next = (*my_node).next;
+            free((*my_node).str);
+            free(my_node);
+            return (1);
+        }
+        x++;
+        prev_node = my_node;
+    }
+    return (0);
+}
