@@ -96,16 +96,19 @@ typedef struct built_in
 	char *cmd_flag;
 	int (*func)(data_t *);
 } table_builtin;
+
 /**print_errors.c*/
 int fd_put(char, int);
 int fd_puts(char *, int);
 int _error_putchar(char);
 void _error_puts(char *);
 void display_err(data_t *, char *);
+
 /**interactive.c*/
 int int_sh(data_t *);
 int delim_check(char, char *);
 int my_atoi(char *);
+int b_h_l(data_t *, char *, int);
 
 /*node.c*/
 ssize_t g_n_i(stringnode_t *, stringnode_t *);

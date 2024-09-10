@@ -126,3 +126,23 @@ int r_his(data_t *d)
     index_his(d);
     return ((*d).h_counter);
 }
+/**
+ * b_h_l - A function that adds to a linked list an entry to a history
+ * @d: The struct parameter.
+ * @my_buff: The buffer parameter.
+ * @count_line: the histcount, history & the linecount.
+ * Return: Always (0).
+ */
+int b_h_l(data_t *d, char *my_buff, int count_line)
+{
+        stringnode_t *my_node = NULL;
+
+        if ((*d).node_his)
+                my_node = (*d).node_his;
+
+        append_node_end(&my_node, my_buff, count_line);
+
+        if (!(*d).node_his)
+                (*d).node_his = my_node;
+        return (0);
+}
