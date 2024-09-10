@@ -109,14 +109,14 @@ int r_his(data_t *d)
         if (my_buff[x] == '\n')
         {
             my_buff[x] = 0;
-            build_history_list(d, my_buff + dest, my_count++);
+            b_h_l(d, my_buff + dest, my_count++);
             dest = x + 1;
         }
         x++;
     }
 
     if (dest != x)
-        build_history_list(d, my_buff + dest, my_count++);
+        b_h_l(d, my_buff + dest, my_count++);
     free(my_buff);
     (*d).h_counter = my_count;
 
