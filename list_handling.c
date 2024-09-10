@@ -57,22 +57,25 @@ char **list_to_str(stringnode_t *my_head)
 }
 /**
  * free_mem - A function that frees the allocated memory of all LL nodes
- * @h: A pointer to the address of the 1st linked list node
+ * @head_ptr: A pointer to the address of the 1st linked list node
  *
  * Return: Nothing (void)
  */
-
-void free_mem(stringnode_t **h)
+void free_mem(stringnode_t **head_ptr)
 {
-	stringnode_t *current = *h;
-	stringnode_t *next;
+    stringnode_t *my_node, *next_node, *head;
 
-	while (current != NULL)
-	{
-		next = current->next;
-		free(current->s);
-		free(current);
-		current = next;
-	}
-	*h = NULL;
+    if (!head_ptr || !*head_ptr)
+        return;
+
+    head = *head_ptr;
+    my_node = head;
+    for (; my_node; my_node = next_node)
+    {
+        next_node = (*my_node).next;
+        free((*my_node).str);
+        free(my_node);
+    }
+    *head_ptr = NULL;
 }
+
