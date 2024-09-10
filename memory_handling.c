@@ -69,3 +69,60 @@ char *set_mem(char *str, char my_byte, unsigned int fill_amount)
 	}
 	return (str);
 }
+/**
+ * r_his - A function that intakes a files' history
+ * @d: the parameter struct
+ *
+ * Return: h_count
+ */
+int r_his(data_t *d)
+{
+    
+    char *my_buff = NULL, *n_o_f = get_history_file(d);
+    int x, dest = 0, my_count = 0;
+    struct stat st;
+    ssize_t file_des, len_reader, file_s = 0;
+
+    if (n_o_f == NULL)
+        return (0);
+
+    file_des = open(n_o_f, O_RDONLY);
+    free(n_o_f);
+    if (file_des == -1)
+        return (0);
+    if (!fstat(file_des, &st))
+        file_s = st.st_size;
+    if (file_s < 2)
+        return (0);
+    my_buff = malloc(sizeof(char) * (file_s + 1));
+    if (my_buff == NULL)
+        return (0);
+    len_reader = read(file_des, my_buff, file_s);
+    my_buff[file_s] = 0;
+    if (len_reader <= 0)
+        return (free(my_buff), 0);
+    close(file_des);
+
+    x = 0;
+    while (x < file_s)
+    {
+        if (my_buff[x] == '\n')
+        {
+            my_buff[x] = 0;
+            build_history_list(d, my_buff + dest, my_count++);
+            dest = x + 1;
+        }
+        x++;
+    }
+
+    if (dest != x)
+        build_history_list(d, my_buff + dest, my_count++);
+    free(my_buff);
+    (*d).h_counter = my_count;
+
+    for (; (*d).h_counter-- >= HIST_MAX;)
+        delete_node_at_index(&(*d).node_his, 0);
+
+    index_his(d);
+    return ((*d).h_counter);
+}
