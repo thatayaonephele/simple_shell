@@ -41,26 +41,6 @@ int current_cd(data_t *d)
 	return (1);
 }
 /**
- * my_his_list - Prints the the history list, one command per line
- * @d: The variable address of the data structure parameter
- *
- * Return: Always success (0)
- */
-
-int my_his_list(data_t *d)
-{
-	stringnode_t *current = d->node_his;
-	int file_des = STDOUT_FILENO; /*descriptor for output*/
-
-	while (current != NULL)
-	{
-		write(file_des, current->s, str_len(current->s));
-		write(file_des, "\n", 1);
-		current = current->next;
-	}
-	return (0);
-}
-/**
  * mimic_alias - A function that is a carbon copy of the alias builtin command
  * @d: The variable address of the data structure parameter
  *

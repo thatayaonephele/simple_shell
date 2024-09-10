@@ -49,7 +49,7 @@ int get_built_in(data_t *d)
 	int x = 0;
 	table_builtin tbl_built_in[] = {
 		{"exit", _exit_shell},
-		{"env", my_his_list},
+		{"env", current_env},
 		{"help", _myhelp},
 		{"history", my_his},
 		{"setenv", set_my_env},

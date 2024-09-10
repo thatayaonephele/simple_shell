@@ -194,7 +194,6 @@ char *_str_ncpy(char *, char *, int);
 /**built1_in.c*/
 int _change_dir(data_t *);
 int current_cd(data_t *);
-int my_his_list(data_t *);
 int _exit_shell(data_t *);
 int mimic_alias(data_t *);
 
