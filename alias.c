@@ -82,46 +82,27 @@ int add_alias(data_t *d, char *s)
 /**
  * del_alias - A function that detaches the alias functionality to a string
  * @d: The variable address of the data structure parameter
- * @s: The string parameter of the alias pointer address
+ * @str: The string parameter of the alias pointer address
  *
  * Return: 0 if the detachment was successful, else 1 for failure
  */
-
-int del_alias(data_t *d, char *s)
+int del_alias(data_t *d, char *str)
 {
-	stringnode_t *curr;
-	stringnode_t *prev;
 
-	if (d == NULL)
-	{
-		return (1);
-	}
-	if (s == NULL)
-	{
-		return (1);
-	}
+    int result;
+    char *ptr;
+    char chr;
 
-	curr = d->my_alias;
-	prev = NULL;
+    ptr = str_chr(str, '=');
+    if (ptr == NULL)
+        return (1);
 
-	while (curr != NULL)
-	{
-		if (lexi_cmp(curr->s, s) == 0)
-		{
-			if (prev != NULL)
-			{
-				prev->next = curr->next;
-			}
-			else
-			{
-				d->my_alias = curr->next;
-			}
-			free(curr->s);
-			free(curr);
-			return (0);
-		}
-		prev = curr;
-		curr = curr->next;
-	}
-	return (1);
+    chr = *ptr;
+    *ptr = 0;
+
+    result = d_n_a_i(&((*d).my_alias),
+                g_n_i((*d).my_alias, n_s_w((*d).my_alias, str, -1)));
+
+    *ptr = chr;
+    return (result);
 }
