@@ -4,15 +4,15 @@
  * of strings
  * @str_array: strings memory to free
  */
-
 void free_str_array(char **str_array)
 {
-	int i = 0;
+    char **temp = str_array;
 
-	while (str_array[i] != NULL)
-	{
-		free(str_array[i]);
-		i++;
-	}
-	free(str_array);
+    if (str_array == NULL)
+        return;
+
+    for (; **str_array; str_array++)
+        free(*str_array);
+
+    free(temp);
 }
