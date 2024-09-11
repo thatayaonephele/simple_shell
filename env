@@ -10,7 +10,7 @@ built1_in.c:		if (chdir(d->cmd_path) == 0)
 built1_in.c:	stringnode_t *current = d->node_his;
 built1_in.c:	result = display_alias(d->my_alias);
 env.c:	if (!d->environ || d->changed_env)
-env.c:		d->environ = list_to_str(d->_env);
+env.c:		d->environ = cnv_list_to_str(d->_env);
 env.c:		d->changed_env = 0;
 env.c:	return (d->environ);
 env.c:	stringnode_t *current = d->_env;

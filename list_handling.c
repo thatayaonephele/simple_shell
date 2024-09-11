@@ -17,43 +17,48 @@ size_t get_list_len(const stringnode_t *head_node)
     return (x);
 }
 /**
- * list_to_str - Prints input list as an array of stringed chars
+ * cnv_cnv_list_to_str - Prints input list as an array of stringed chars
  * @my_head: A pointer to the address of the first linked list nodde
  *
  * Return: An array of stringed characters
  */
-
-char **list_to_str(stringnode_t *my_head)
+char **cnv_list_str(stringnode_t *my_head)
 {
-	int num_nodes = 0;
-	int i;
-	stringnode_t *current_node = my_head;
-	char **str_array;
+    stringnode_t *my_node = my_head;
+    size_t x = get_list_len(my_head), y;
+    char **sub_str;
+    char *str;
 
-	while (current_node != NULL)
-	{
-		num_nodes++;
-		current_node = current_node->next;
-	}
-	str_array = (char **)malloc((num_nodes + 1) * sizeof(char *));
-	if (str_array == NULL)
-	{
-		perror("malloc");
-		_exit(EXIT_FAILURE);
-	}
+    if (my_head == NULL || !x)
+        return (NULL);
 
-	current_node = my_head;
-	i = 0;
+    sub_str = malloc(sizeof(char *) * (x + 1));
+    if (sub_str == NULL)
+        return (NULL);
 
-	while (current_node != NULL)
-	{
-		str_array[i] = current_node->s;
-		current_node = current_node->next;
-		i++;
-	}
-	str_array[num_nodes] = NULL;
+    x = 0;
+    while (my_node != NULL)
+    {
+        str = malloc(str_len((*my_node).str) + 1);
+        if (str == NULL)
+        {
+            y = 0;
+            while (y < x)
+            {
+                free(sub_str[y]);
+                y++;
+            }
+            free(sub_str);
+            return (NULL);
+        }
 
-	return (str_array);
+        str = str_cpy(str, (*my_node).str);
+        sub_str[x] = str;
+        my_node = (*my_node).next;
+        x++;
+    }
+    sub_str[x] = NULL;
+    return (sub_str);
 }
 /**
  * free_mem - A function that frees the allocated memory of all LL nodes

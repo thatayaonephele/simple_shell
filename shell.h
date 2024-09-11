@@ -135,7 +135,6 @@ void comment_remover(char *);
 int print_decimal(int, int);
 
 /**list_handling.c*/
-char **list_to_str(stringnode_t *);
 size_t display_str_element(const stringnode_t *);
 void free_mem(stringnode_t **);
 size_t display_list(const stringnode_t *);
@@ -156,7 +155,6 @@ int getLine(data_t *, char **, size_t *);
 
 /**list_handling.c*/
 size_t get_list_len(const stringnode_t *);
-char **list_to_str(stringnode_t *);
 void print_str_array(char **);
 size_t display_list(const stringnode_t *);
 
@@ -234,4 +232,5 @@ int alph_check(int);
 int str_len(char *);
 
 int hsh(data_t *, char **);
+char **cnv_list_str(stringnode_t *);
 #endif

@@ -9,7 +9,7 @@ char **find_env(data_t *d)
 {
 	if (!d->environ || d->changed_env)
 	{
-		d->environ = list_to_str(d->_env);
+		d->environ = cnv_list_to_str(d->_env);
 		d->changed_env = 0;
 	}
 	return (d->environ);
