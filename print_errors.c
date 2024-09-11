@@ -83,3 +83,19 @@ int fd_put(char ch, int file_des)
     }
     return (1);
 }
+/**
+ * disp_err - A function that displays messages of error type
+ * @d: The struct parameter
+ * @str_err_type: The str parameter having specified err type
+ * Return: -1 on err, 0 if no no.s in str, else converted num
+ */
+void disp_err(data_t *d, char *str_err_type)
+{
+    error_puts((*d).file_name);
+    error_puts(": ");
+    disp_d((*d).count_line, STDERR_FILENO);
+    error_puts(": ");
+    error_puts((*d).argv[0]);
+    error_puts(": ");
+    error_puts(str_err_type);
+}
