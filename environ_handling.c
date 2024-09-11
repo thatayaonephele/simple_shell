@@ -51,8 +51,17 @@ int append_env_list(data_t *d)
  *
  * Return: 0 on success, else 1 on error
  */
-
-
+int set_my_env(data_t *d)
+{
+    if ((*d).argc != 3)
+    {
+        error_puts("Incorrect number of arguments\n");
+        return (1);
+    }
+    if (add_env(d, (*d).argv[1], (*d).argv[2]))
+        return (0);
+    return (1);
+}
 /**
  * current_env - Displays the environment of the current directory
  * @d: parameter struct
