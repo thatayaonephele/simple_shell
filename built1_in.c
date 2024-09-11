@@ -46,14 +46,30 @@ int current_cd(data_t *d)
  *
  * Return: Always Success (0)
  */
-
 int mimic_alias(data_t *d)
 {
-	int result;
+    int x = 0;
+    char *ptr = NULL;
+    stringnode_t *my_node = NULL;
 
-	result = display_alias(d->my_alias);
-
-	return (result);
+    if ((*d).argc == 1)
+    {
+        my_node = (*d).my_alias;
+        for (; my_node; my_node = (*my_node).next)
+        {
+            display_alias(my_node);
+        }
+        return (0);
+    }
+    for (x = 1; (*d).argv[x]; x++)
+    {
+        ptr = str_chr((*d).argv[x], '=');
+        if (ptr == NULL)
+            display_alias(n_s_w((*d).my_alias, (*d).argv[x], '='));
+        else
+            add_alias(d, (*d).argv[x]);
+    }
+    return (0);
 }
 /**
  * my_his - A function that lists history, shows 1 cmd/line, followed
