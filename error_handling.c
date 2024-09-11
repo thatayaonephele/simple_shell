@@ -8,7 +8,7 @@
  */
 int num_converter(p, my_arr, x, p_s, b, f, y) {
     int result;
-    
+
     if (p) {
         result = my_arr[x];
     } else {
@@ -109,4 +109,22 @@ int print_decimal(int y, int file_des)
 	write(file_des, buffer, i);
 
 	return (length);
+}
+/**
+ * error_puts - A function that displays an inputed str parameters
+ * @str: Parameter of string type to be displayed
+ *
+ * Return: Nothing (Void Function)
+ */
+void error_puts(char *str)
+{
+    int x = 0;
+
+    if (str == NULL)
+        return;
+
+    for (x = 0; str[x] != '\0'; x++)
+    {
+        error_putchar(str[x]);
+    }
 }
