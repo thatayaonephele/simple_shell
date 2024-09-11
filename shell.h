@@ -100,8 +100,8 @@ typedef struct built_in
 /**print_errors.c*/
 int fd_put(char, int);
 int fd_puts(char *, int);
-int _error_putchar(char);
-void _error_puts(char *);
+int error_putchar(char);
+void error_puts(char *);
 void display_err(data_t *, char *);
 
 /**interactive.c*/

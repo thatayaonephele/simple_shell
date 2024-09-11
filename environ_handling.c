@@ -18,7 +18,7 @@ int unset_my_env(data_t *d)
     x = 1;
     while (x <= (*d).argc)
     {
-        _unsetenv(d, (*d).argv[x]);
+        del_env(d, (*d).argv[x]);
         x++;
     }
 
@@ -38,7 +38,7 @@ int append_env_list(data_t *d)
 
     while (environ[x])
     {
-        add_node_end(&my_node, environ[x], 0);
+        app_node_end(&my_node, environ[x], 0);
         x++;
     }
 

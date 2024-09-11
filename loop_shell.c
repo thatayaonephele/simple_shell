@@ -84,7 +84,7 @@ int hsh(data_t *d, char **av)
 		data_clear(d);
 		if (int_sh(d))
 			my_puts("$ ");
-		_error_putchar(BUF_FLUSH);
+		error_putchar(BUF_FLUSH);
 		x = get_input(d);
 		if (x != -1)
 		{
