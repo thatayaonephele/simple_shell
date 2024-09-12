@@ -101,3 +101,35 @@ char **set_my_environ(data_t *d)
 
         return ((*d).environ);
 }
+/**
+ * set_d - A fuction that takes a data_t struct & initializes it
+ * @d: The struct parameter
+ * @av: The argument vector
+ */
+void set_d(data_t *d, char **av)
+{
+        int x = 0;
+
+        (*d).file_name = av[0];
+        if ((*d).arg)
+        {
+                (*d).argv = str_token((*d).arg, " \t");
+                if (!(*d).argv)
+                {
+                        (*d).argv = malloc(sizeof(char *) * 2);
+                        if ((*d).argv)
+                        {
+                                (*d).argv[0] = dup_str((*d).arg);
+                                (*d).argv[1] = NULL;
+                        }
+                }
+
+                for (x = 0; (*d).argv && (*d).argv[x]; x++)
+                        ;
+
+                (*d).argc = x;
+
+                alias_rep(d);
+                var_rep(d);
+        }
+}
