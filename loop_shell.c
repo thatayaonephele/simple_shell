@@ -88,7 +88,7 @@ int hsh(data_t *d, char **av)
 		x = get_input(d);
 		if (x != -1)
 		{
-			data_set(d, av);
+			set_d(d, av);
 			ret_built_in = get_built_in(d);
 			if (ret_built_in == -1)
 				get_cmd(d);
