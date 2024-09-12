@@ -53,21 +53,19 @@ int free_vars(void **p)
  * @my_byte: The byte value to fill the memory block with
  * @fill_amount: The number of bytes to fill
  *
- * Return: Pointer to the filled memory block
+ * Return: Pointer to the filled memory block ptr_str area
  */
-
-char *set_mem(char *str, char my_byte, unsigned int fill_amount)
+char *set_mem(char *ptr_str, char my_byte, unsigned int fill_amount)
 {
-	unsigned int i;
+        unsigned int x = 0;
 
-	if (str == NULL || fill_amount == 0)
-		return (NULL);
+        while (x < fill_amount)
+        {
+                *(ptr_str + x) = my_byte;
+                x++;
+        }
 
-	for (i = 0; i < fill_amount; i++)
-	{
-		str[i] = my_byte;
-	}
-	return (str);
+        return (ptr_str);
 }
 /**
  * r_his - A function that intakes a files' history
