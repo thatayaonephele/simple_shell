@@ -98,51 +98,6 @@ int disp_d(int temp, int file_des)
 
     tmp = _abs_;
     x = 1000000000;
-
-    while (x > 1)
-    {
-        if (_abs_ / x)
-        {
-            __putchar('0' + tmp / x);
-            cnt = cnt + 1;
-        }
-        tmp = tmp - (tmp / x) * x;
-        x = x / 10;
-    }
-    __putchar('0' + tmp);
-    cnt = cnt + 1;
-
-    return (cnt);
-}
-/**
- * disp_d - A function that displays a decimal of int type into base 10
- * @temp: The control parameter
- * @file_des: The file descriptor to be written into
- *
- * Return: cnt no. of chars
- */
-int disp_d(int temp, int file_des)
-{
-    unsigned int _abs_, tmp;
-    int cnt = 0, x;
-    int (*__putchar)(char) = _putchar;
-
-    if (file_des == STDERR_FILENO)
-        __putchar = error_putchar;
-
-    if (temp > 0)
-    {
-        _abs_ = temp;
-    }
-    else
-    {
-        _abs_ = -temp;
-        __putchar('-');
-        cnt = cnt + 1;
-    }
-
-    tmp = _abs_;
-    x = 1000000000;
     while (x > 1)
     {
         if (_abs_ / x)
