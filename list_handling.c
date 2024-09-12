@@ -17,7 +17,7 @@ size_t get_list_len(const stringnode_t *head_node)
     return (x);
 }
 /**
- * cnv_cnv_list_to_str - Prints input list as an array of stringed chars
+ * cnv_cnv_list_str - Prints input list as an array of stringed chars
  * @my_head: A pointer to the address of the first linked list nodde
  *
  * Return: An array of stringed characters
