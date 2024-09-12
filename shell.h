@@ -109,7 +109,7 @@ int int_sh(data_t *);
 int delim_check(char, char *);
 int my_atoi(char *);
 int b_h_l(data_t *, char *, int);
-
+char **set_my_environ(data_t *);
 /*node.c*/
 ssize_t g_n_i(stringnode_t *, stringnode_t *);
 char *hay_start(const char *, const char *);

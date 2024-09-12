@@ -85,3 +85,19 @@ int add_env(data_t *d, char *str_env_var, char *str_var)
     (*d).env_changed = 1;
     return (0);
 }
+/**
+ * set_my_environ - A function that returns an arr of an enviroment
+ * @d: The struct parameter
+ *
+ * Return: Always 0
+ */
+char **set_my_environ(data_t *d)
+{
+        if (!(*d).environ || (*d).env_changed)
+        {
+                (*d).environ = cnv_str_list((*d).env);
+                (*d).env_changed = 0;
+        }
+
+        return ((*d).environ);
+}
