@@ -163,7 +163,7 @@ void free_str_array(char **);
 
 /**data.c*/
 void free_data(data_t *, int);
-void data_set(data_t *, char **);
+void set_d(data_t *, char **);
 void clear_d(data_t *);
 
 /**environ_handling.c*/
