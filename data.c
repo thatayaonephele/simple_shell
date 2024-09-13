@@ -7,7 +7,7 @@
  * Return: void
  */
 
-void free_data(data_t *data, int x)
+void free_data(data_t *d, int x)
 {
 	stringnode_t *current_his, *next_his;
 
