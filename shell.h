@@ -206,7 +206,7 @@ int alias_sub(data_t *);
 int index_his(data_t *);
 int w_his(data_t *);
 int list_his(data_t *d, char *, int);
-char *g_h_f(data_t *);
+char *get_history_file(data_t *);
 int r_his(data_t *);
 
 /**env.c*/
