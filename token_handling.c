@@ -96,12 +96,12 @@ char **str_token2(char *s, char del)
 
 int getLine(data_t *d, char **my_ptr, size_t *object_size)
 {
-    
-    size_t tmp;   
+
+    size_t tmp;
     ssize_t result = 0, sub_str = 0;
-    static char buff_read[READ_BUF_SIZE];
+    static char my_buffer[READ_BUF_SIZE];
     char *new_p = NULL, *chr;
-    static size_t x, my_len; 
+    static size_t x, my_len;
 
     my_ptr = *my_ptr;
     if (my_ptr && object_size)
@@ -113,16 +113,16 @@ int getLine(data_t *d, char **my_ptr, size_t *object_size)
         x = my_len = 0;
     }
 
-    result = read_buf(d, buff_read, &my_len);
+    result = buff_read(d, my_buffer, &my_len);
     if ((result == 0 && my_len == 0) || result == -1)
     {
         return (-1);
     }
 
-    chr = str_chr(buff_read + x, '\n');
-    if (chr)
+    chr = str_chr(my_buffer + x, '\n');
+    if (chr != NULL)
     {
-        tmp = 1 + (unsigned int)(chr - buff_read);
+        tmp = 1 + (unsigned int)(chr - my_buffer);
     }
     else
     {
@@ -149,11 +149,11 @@ int getLine(data_t *d, char **my_ptr, size_t *object_size)
 
     if (!sub_str)
     {
-        str_cpy(new_p, buff_read + x, tmp - x + 1);
+        str_cpy(new_p, my_buffer + x, tmp - x + 1);
     }
     else
     {
-        _str_ncat(new_p, buff_read + x, tmp - x);
+        str_ncat(new_p, my_buffer + x, tmp - x);
     }
 
     sub_str = sub_str + tmp - x;
