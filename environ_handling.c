@@ -38,7 +38,7 @@ int append_env_list(data_t *d)
 
     while (environ[x])
     {
-        app_node_end(&my_node, environ[x], 0);
+        append_node_end(&my_node, environ[x], 0);
         x++;
     }
 

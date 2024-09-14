@@ -46,7 +46,7 @@ int add_alias(data_t *d, char *str)
                 return (del_alias(d, str));
 
         del_alias(d, str);
-        return (app_node_end(&((*d).my_alias), str, 0) == NULL);
+        return (append_node_end(&((*d).my_alias), str, 0) == NULL);
 }
 /**
  * del_alias - A function that detaches the alias functionality to a string

@@ -115,7 +115,7 @@ ssize_t g_n_i(stringnode_t *, stringnode_t *);
 char *hay_start(const char *, const char *);
 stringnode_t *n_s_w(stringnode_t *, char *, char);
 stringnode_t *add_node(stringnode_t **node_h, char *s, int n);
-stringnode_t *app_node_end(stringnode_t **, const char *, int);
+stringnode_t *append_node_end(stringnode_t **, const char *, int);
 int d_n_a_i(stringnode_t **, unsigned int);
 
 
