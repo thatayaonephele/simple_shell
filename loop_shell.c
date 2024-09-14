@@ -159,33 +159,34 @@ void get_cmd(data_t *d)
  *@size_length: The length of the pointer address
  *Return: The command's read bytes data
  */
-ssize_t buf_input(data_t *d, char **chr_buffer, size_t *size_length)
+ssize_t buf_input(data_t *d, char **chr_buffer, size_t *obeject_size)
 {
-	size_t ptr_length = 0;
-	ssize_t x = 0;
+    ssize_t x = 0;
+    size_t ptr_length = 0;
 
-	if (!*size_length)
-	{
-		free(*chr_buffer);
-		*chr_buffer = NULL;
-		signal(SIGINT, block_ctrl_c);
-		x = getline(chr_buffer, &ptr_length, stdin);
-		x = getLine(d, chr_buffer, &ptr_length);
-		if (x > 0)
-		{
-			if ((*chr_buffer)[x - 1] == '\n')
-			{
-				(*chr_buffer)[x - 1] = '\0';
-				x--;
-			}
-			d->flag_line_cnt = 1;
-			comment_remover(*chr_buffer);
-			list_his(d, *chr_buffer, d->h_counter++);
-			{
-			*size_length = x;
-			d->chain_buff_cmd = chr_buffer;
-			}
-		}
-	}
-	return (x);
+    if (*obeject_size)
+    {
+        free(*chr_buffer);
+        *chr_buffer = NULL;
+        signal(SIGINT, s_i_h);
+
+        x = GetLine(chr_buffer, &ptr_length, stdin);
+
+        x = Get_line(d, chr_buffer, &ptr_length);
+
+        if (x > 0)
+        {
+            if (*(chr_buffer + x - 1) == '\n')
+            {
+                *(chr_buffer + x - 1) = '\0';
+                x--;
+            }
+            (*d).linecount_flag = 1;
+            comment_remover(*chr_buffer);
+            b_h_l(d, *chr_buffer, (*d).h_counter++);
+            *obeject_size = x;
+            (*d).cmd_buf = chr_buffer;
+        }
+    }
+    return x;
 }
