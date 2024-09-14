@@ -35,49 +35,18 @@ int display_alias(stringnode_t *my_node)
  *
  * Return: 0 if the attachment was successful, else 1 for failure
  */
-
-int add_alias(data_t *d, char *s)
+int add_alias(data_t *d, char *str)
 {
-	stringnode_t *new_alias;
-	stringnode_t *current;
-	char *dup_s;
+        char *ptr;
 
-	if (d == NULL)
-	{
-		return (1);
-	}
-	if (s == NULL)
-	{
-		return (1);
-	}
-	new_alias = (stringnode_t *)malloc(sizeof(stringnode_t));
-	if (new_alias == NULL)
-	{
-		return (1);
-	}
-	dup_s = char_dup(s, 0, str_len(s) - 1);
-	if (dup_s == NULL)
-	{
-		free(new_alias);
-		return (1);
-	}
-	new_alias->s = dup_s;
-	new_alias->next = NULL;
+        ptr = str_chr(str, '=');
+        if (ptr == NULL)
+                return (1);
+        if (*++ptr == NULL)
+                return (del_alias(d, str));
 
-	if (d->my_alias == NULL)
-	{
-		d->my_alias = new_alias;
-	}
-	else
-	{
-		current = d->my_alias;
-		while (current->next != NULL)
-		{
-			current = current->next;
-		}
-		current->next = new_alias;
-	}
-	return (0);
+        del_alias(d, str);
+        return (app_node_end(&((*d).my_alias), str, 0) == NULL);
 }
 /**
  * del_alias - A function that detaches the alias functionality to a string
