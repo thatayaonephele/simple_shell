@@ -76,7 +76,7 @@ char *set_mem(char *ptr_str, char my_byte, unsigned int fill_amount)
 int r_his(data_t *d)
 {
     
-    char *my_buff = NULL, *n_o_f = get_history_file(d);
+    char *my_buff = NULL, *n_o_f = g_h_f(d);
     int x, dest = 0, my_count = 0;
     struct stat st;
     ssize_t file_des, len_reader, file_s = 0;

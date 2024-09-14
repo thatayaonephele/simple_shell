@@ -101,7 +101,7 @@ char *est_env_val(data_t *d, const char *my_str)
 int w_his(data_t *d)
 {
     ssize_t file_des;
-    char *n_o_f = get_history_file(d);
+    char *n_o_f = g_h_f(d);
     stringnode_t *my_node = NULL;
 
     if (n_o_f == NULL)
