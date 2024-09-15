@@ -93,6 +93,44 @@ char **str_token2(char *s, char del)
  *
  * Return: The amount of bytes read
  */
+ssize_t est_input(data_t *d)
+{
+        static char *my_buff;
+        static size_t x, y, ptr_size;
+        ssize_t len_of_buf = 0;
+        char **ptr_to_buff = &((*d).arg), *ptr;
+
+        _putchar(BUF_FLUSH);
+        len_of_buf = buf_input(d, &my_buff, &ptr_size);
+        if (len_of_buf == -1)
+                return (-1);
+        if (ptr_size)
+        {
+                y = x;
+                ptr = my_buff + x;
+
+                chain_check(d, my_buff, &y, x, ptr_size);
+                
+                for (; y < ptr_size; y++)
+                {
+                        if (chain_ver(d, my_buff, &y))
+                                break;
+                }
+
+                x = y + 1;
+                if (x >= ptr_size)
+                {
+                        x = ptr_size = 0;
+                        (*d).buff_cmd_type = CMD_NORM;
+                }
+
+                *ptr_to_buff = ptr;
+                return (str_len(ptr));
+        }
+
+        *ptr_to_buff = my_buff;
+        return (len_of_buf);
+}
 
 int getLine(data_t *d, char **my_ptr, size_t *object_size)
 {
