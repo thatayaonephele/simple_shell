@@ -247,3 +247,36 @@ stringnode_t *append_node_end(stringnode_t **my_h, const char *str, int num)
 
         return (size_of_list);
 }
+/**
+ * check_chain - Determines if command chaining should continue based on the last command's status.
+ * @d: The structure that holds all command-related information.
+ * @my_chr_buf: The buffer storing the current input commands.
+ * @ptr: The address of the current position within the buffer.
+ * @x: The starting position in the buffer.
+ * @buff_length: The length of the current buffer.
+ *
+ * Return: Nothing (Void)
+ */
+void check_chain(info_t *d, char *my_chr_buf, size_t *ptr, size_t x, size_t buff_length)
+{
+    size_t y = *ptr;
+
+    if ((*d).buff_cmd_type == CMD_AND)
+    {
+        if ((*d).exec_cmd_status)
+        {
+            *(my_chr_buf + x) = 0;
+            y = buff_length;
+        }
+    }
+    if ((*d).buff_cmd_type == CMD_OR)
+    {
+        if (!(*d).exec_cmd_status)
+        {
+            *(my_chr_buf + x) = 0;
+            y = buff_length;
+        }
+    }
+
+    *ptr = y;
+}
