@@ -75,3 +75,28 @@ size_t display_str_element(const stringnode_t *my_h)
 
     return (size_of_list);
 }
+/**
+ * g_h_f - A function that gets the files' history
+ * @d: The structure parameter 
+ *
+ * Return: The file history addr contained as an allocated str
+ */
+char *g_h_f(data_t *d)
+{
+    char *tmp_dir, *my_buff;
+
+    tmp_dir = est_env_val(d, "HOME=");
+    if (!tmp_dir)
+        return (NULL);
+
+    my_buff = malloc(sizeof(char) * (str_len(tmp_dir) + str_len(HIST_FILE) + 2));
+    if (my_buff == NULL)
+        return (NULL);
+
+    *(my_buff + 0) = 0;  /* Equivalent to buf[0] = 0 */
+    str_cpy(my_buff, tmp_dir);
+    str_cat(my_buff, "/");
+    str_cat(my_buff, HIST_FILE);
+
+    return (my_buff);
+}
